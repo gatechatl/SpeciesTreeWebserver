@@ -1,0 +1,197 @@
+<html>
+<head>
+
+<?php
+//echo "hello";
+//require "config.php";
+
+//echo "running PHP <br />";
+$triple = $_POST["triple"];
+$seed = $_POST["Seed"];
+$sna = $_POST["sna"];
+$initialtree = $_POST["usertree"];
+
+
+
+$uniq_id = uniqid();
+
+$original_path = "Output/" . $uniq_id . "/";
+
+$target_path = "Output/" . $uniq_id . "/";
+$input_file = "Output/" . $uniq_id . "/input.tre";
+
+mkdir($target_path, 755);
+exec("chmod a+wrx " . $target_path);
+
+//echo $target_path . "<br />";
+//$target_path = $original_path . basename( $_FILES['uploadedfile']['name']);
+$target_path = $input_file;
+
+$input_filename = $_FILES['uploadedfile']['name'];
+
+$files = "";
+$space = 0;
+if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
+    //if ($space == 0) {
+    //    $files = $files . $input_file . " " . $param_file;
+    //} else {
+    //    $files = $files . " " .$input_file . " " . $param_file;
+    //}
+    //$space = 1;
+    //exec("cp " . $target_path . " " . $input_path);
+    //echo "The file ".  basename( $_FILES['uploadedfile']['name']).
+    //" has been uploaded";
+} else{
+    //echo "There was an error uploading the file, please try again!";
+}
+
+exec("cp Output/" . $uniq_id . "/input.tre mpest_1.2/data/genetree.tree");
+
+$countGeneTrees = 0;
+$genetreeFile = fopen("Output/" . $uniq_id . "/input.tre", "r");
+
+while(!feof($genetreeFile)) { 
+    $line = fgets($genetreeFile);
+    if (strlen(trim($line)) > 1) {
+        $countGeneTrees++;
+    }
+}
+
+
+
+fclose($genetreeFile);
+
+chdir("./mpest_1.2/data");
+//exec("rm control");
+
+$file = fopen("control", "w");
+
+$startTree = "";
+$array = explode("\n", $initialtree);
+$randomTree = 0;
+foreach ($array as &$value) {
+    if (strlen(trim($value)) > 1) {
+        $startTree = $startTree . str_replace("\r", "", $value);
+        $randomTree = 1;
+    }
+}
+
+$realsna = "";
+$array = explode("\n", $sna);
+$countspecies = 0;
+foreach ($array as &$value) {
+    if (strlen(trim($value)) > 1) {
+        $realsna = $realsna . str_replace("\r", "", $value) . "\n";
+        $countspecies++;
+    }
+}
+
+
+$output = "genetree.tree\n" . $triple . "\n" . $seed . "\n" . $countGeneTrees . " " . $countspecies . "\n" . $realsna . $randomTree . "\n" . $startTree;
+fwrite($file, $output);
+
+fclose($file);
+
+
+exec("../src/mpest control");
+chdir("../../");
+
+exec("cp ./mpest_1.2/data/genetree.tree.tre " . $original_path . "/output.tre");
+
+if (file_exists($original_path . "/output.tre")) {
+$file = fopen($original_path . "/output.tre", "r");
+$treeoutput = "";
+while (!feof($file)) {
+   $treeoutput = $treeoutput . fgets($file);
+   
+}
+fclose($file);
+}
+
+$file = fopen($original_path."index.html", "w");
+$index = "<html>
+
+<head> </head> <body>
+<title>Species Tree STAR Method</title>
+<link href=\"../../../site.css\" type=\"text/css\" rel=\"stylesheet\" />
+<script type=\"text/javascript\" src=\"../../../jquery.corner.js\"></script>
+<script type=\"text/javascript\" src=\"../../../jquery.js\"></script>
+<script type=\"text/javascript\">
+        $(\"#footer\").corner(\"bottom\");
+</script>
+</head>
+<body>
+<div class=\"container\" style=\"height:90%;\">
+        <div class=\"top\">
+                <a>Species Tree STAR</a><br /><br />
+        </div>
+        <div class=\"navbar\" align=\"left\">
+                <a /><a href=\"../../../index.php\" id=\"first\" >Home</a> <a href=\"../../../STAR.php\">STAR</a>
+        </div>
+        <div class=\"content\" style=\"height:150%;\">
+                <div class=\"mainpanel\" >
+                        <div class=\"register\" >
+                        Species Tree in Newick Format <br />
+                        <textarea  rows=\"8\" cols=\"80\"  name=\"dna1\">
+" . $treeoutput . " </textarea><br />
+                        <img src=\"output.png\" alt=\"Output\" height=\"500\" width=\"600\"/> <br />
+
+                        <br />
+
+
+                        </div>
+                </div>
+
+        </div>
+
+</div>
+</body>
+</html>
+";
+
+fwrite($file, $index);
+fclose($file);
+echo "<meta HTTP-EQUIV=\"REFRESH\" content=\"0; url=".$original_path."index.html"."\">";
+
+?>
+
+
+<title>STAR Species Tree</title>
+<link href="../site.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../jquery.corner.js"></script>
+<script type="text/javascript" src="../jquery.js"></script>
+<script type="text/javascript">
+        $("#footer").corner("bottom");
+</script>
+</head>
+<body>
+<div class="container" style="height:90%;">
+        <div class="top">
+                <a>Species Tree</a><br /><br />
+        </div>
+        <div class="navbar" align="left">
+                <a /><a href="../../../index.php" id="first" >Home</a> <a href="../../../STAR.php">STAR</a>
+        </div>
+        <div class="content" style="height:87%;">
+                <div class="mainpanel" >
+                        <div class="register" >
+                        <!--<img src=\"output.png\" alt=\"Output\"/>-->
+                        <span class="heading2">Proccessing Query</span>
+
+                        <br />
+                        <br />
+
+
+                        <br />
+
+
+                        </div>
+                </div>
+
+        </div>
+
+</div>
+</body>
+</html>
+
+

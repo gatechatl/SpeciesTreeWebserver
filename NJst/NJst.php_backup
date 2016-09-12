@@ -1,0 +1,144 @@
+<html>
+<head>
+<title>NJst program</title>
+<link href="site.css" type="text/css" rel="stylesheet" />
+<!--script type="text/javascript" src="jquery.corner.js"></script-->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<!--script type="text/javascript">
+	$("#footer").corner("bottom");
+</script-->
+</head>
+<body>
+<div class="container" style="height:200%;">
+	<div class="top">
+		<a>NJst Program</a><br /><br />
+	</div>
+    <div class="navbar" align="left">
+<font size=4>            <a /><a href="../index.php" id="first" >Home</a> <a href="../STAR/STAR.php">STAR</a> <a href="../mpest/mpest.php">MP-EST</a> <a href="../NJst/NJst.php">NJst</a> <a href="../ExtractSpecies/GenerateSpeciesAllele.php">CreateSNATable</a> <a href="../RerootTree/unrooted2rooted.php">RerootTree</a></font>
+    </div>
+	<div class="content" style="height:95%;">
+		<div class="mainpanel" >
+			<div class="register" >
+
+
+			<span class="heading1">NJst Program</span>
+			<br />
+            <br />
+The NJst method estimates species trees from a collection of <font color="red">unrooted</font> gene trees. The format of the input gene trees for the NJst method is the same as those for the STAR and MP-EST methods, except that NJst accepts both unrooted and rooted gene trees. When multiple alleles (or sequences) are sampled from each species (or some species), the user must provide a species-allele table to indicate which alleles belong to which species. For example, the following gene trees have taxa S1-6. <br /><br />
+
+<center><font color="blue">
+((((S1:0.1,S2:0.1):0.1,S4:0.1):0.1,S3:0.1):0.1,S5:0.1,S6:0.2); 
+<br />
+(((((S1:0.1,S2:0.1):0.1,S4:0.1):0.1,S5:0.1):0.1,S3:0.1):0.1,S6:0.2); 
+<br />
+(((((S1:0.1,S2:0.1):0.1,S4:0.1):0.1,S3:0.1):0.1,S5:0.1):0.1,S6:0.2); 
+<br /><br /></font></center>
+
+Suppose S1 and S2 were sampled from Human, S3 and S4 were sampled from Ape, S5 were sampled from Gorilla, and S6 was sampled from Chimpanzee. Then the species-allele table may be <br />
+
+<center>
+<table border="0" style="color:blue">
+<font color="blue">
+<tr>
+<td>H</td>
+<td>2</td>
+<td>S1 S2</td>
+</tr>
+<tr>
+<td>A</td>
+<td>2</td>
+<td>S3 S4</td>
+</tr>
+<tr>
+<td>G</td>
+<td>1</td>
+<td>S5</td>
+</tr>
+<tr>
+<td>C</td>
+<td>1</td>
+<td>S6</td>
+</tr>
+</table>
+<br /></center>
+
+If each species has only one  allele (or sequence), you do not need to provide this table. Just upload the gene tree file and click "submit". When multiple alleles were sampled, please provide the species-allele table in the textbox and then upload the tree file and click "submit". <br />
+
+			<form name="input" action="../callPostRequest.php" method="post" enctype="multipart/form-data">
+			<!--Sequence: <br />
+                        <textarea  rows="6" cols="50"  name="dna1">>test
+ATGGAAAACAGATGGCAGGTGATGATTGTGTGGCAAGTAGACAGGATGAGGATTAGAACATGGAAAAGTTTAGTAAAACACCATATGTATAGGTCAGGAAAAGCTAAGGGATGGTTTTATAGACATCACTATGAAAGCACTCATCCAAGAATAAGTTCAGAAGTACACATCCCACTAGGGGATGCTAGATTGGTAATAACAACATGTTGGGGTCTGCAGACAGGAGAAAGAGAACGGCATTTGGGCCAGGGAGTCTCCATAGAATGGAGGAAAAAGAGATATAGCACGCAAGTAGACCCTAGCCTAGCAGACCAACTAATTCATCTGTATTACTTTGATTGTTTTTCAGAATCTGCTATAAGAAATGCCATATTAGGACATATAGTTAGTCCTAGTTGTGAATATCAAGCAGGACATAACAAGGTAGGATCTCTGCAGTACTTGGCACTAGCAGCATTAAGAACACCAAAAAAGATAAAGCCACCTTTGCCTAGTGTTACAAAATTGACAGAGGATAGATGGAACAAGCCCCAGAAGACCAAGGGCCACAGAGGGAGCCATACAATGAATGGACACTAG
+</textarea>-->
+
+               <textarea  rows="6" cols="70"  name="sna">
+<?php 
+if (!empty($_POST['control'])) {
+  echo $_POST['control'];
+}
+
+?>
+</textarea>
+<div>
+    Single Tree
+    <input type='radio' name='myradio' value='first' onclick="setDisplay('div1', true); setDisplay('div2', false);" checked /> Bootstrap Gene Tree
+    <input type='radio' name='myradio' value='second' onclick="setDisplay('div1', false); setDisplay('div2', true);" /> <br />
+</div>
+<div id="div1" style="display: block">
+Upload rooted gene trees one line per tree:
+                        <input name="uploadedfile" type="file" ><br />
+                        <INPUT type="button" value = "Create Single Species Tree" name=button1 onclick="return OnButton1();"><br /> <br />
+</div>
+
+<div id="div2" style="display: none">
+Upload ZIP file containing the bootstrapped gene trees:
+                        <input name="uploadedZipfile" type="file" /><br />
+                        <INPUT type="button" value = "Species Tree Bootstrap" name=button2 onclick="return OnButton2();">
+</div>
+
+<br />
+<!--Upload unrooted or rooted  gene trees one line per tree: 
+                        <input name="uploadedfile" type="file" /><br />
+			<input type="submit" value="Submit" />-->
+			</form>
+
+			<br />
+
+
+			</div>
+		</div>
+		
+	</div>
+
+</div>
+</body>
+</html>
+
+<script language="Javascript">
+<!--
+function OnButton1()
+{
+    document.input.action="NJst/runNJst.php"
+    document.input.submit();
+}
+
+function OnButton2()
+{
+    document.input.action="NJst/runBootStrap.php"
+    document.input.submit();
+
+}
+function setVisible(id, visible) {
+        var o = document.getElementById(id);
+        if (typeof(o) != 'undefined') o.style.visibility = visible ? 'visible' : 'hidden';
+        if (typeof(o) == 'undefined') alert("Element with id '" + id + "' not found.");
+}
+
+function setDisplay(id, visible) {
+        var o = document.getElementById(id);
+        if (typeof(o) != 'undefined') o.style.display = visible ? 'block' : 'none';
+        if (typeof(o) == 'undefined') alert("Element with id '" + id + "' not found.");
+}
+
+-->
+</script>
+

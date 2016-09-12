@@ -1,0 +1,1605 @@
+Archive:  input.zip
+   creating: raxml_conserved/
+  inflating: raxml_conserved/.DS_Store  
+   creating: __MACOSX/
+   creating: __MACOSX/raxml_conserved/
+  inflating: __MACOSX/raxml_conserved/._.DS_Store  
+  inflating: raxml_conserved/RAxML_bootstrap.gene1.raxml.out  
+  inflating: raxml_conserved/RAxML_bootstrap.gene14.raxml.out  
+  inflating: raxml_conserved/RAxML_bootstrap.gene15.raxml.out  
+  inflating: raxml_conserved/RAxML_bootstrap.gene19.raxml.out  
+  inflating: raxml_conserved/RAxML_bootstrap.gene9.raxml.out  
+java.io.FileNotFoundException: Output/5182a2e2d9fb2/Bootstrap/SNA.txt (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:137)
+	at java.io.FileInputStream.<init>(FileInputStream.java:96)
+	at CreateInputMatrix.main(CreateInputMatrix.java:31)
+Output/5182a2e2d9fb2/ZipOutput	Output/5182a2e2d9fb2/ZipOutput/input.zip	Output/5182a2e2d9fb2/ZipOutput/__MACOSX	Output/5182a2e2d9fb2/ZipOutput/__MACOSX/raxml_conserved	Output/5182a2e2d9fb2/ZipOutput/__MACOSX/raxml_conserved/._.DS_Store	Output/5182a2e2d9fb2/ZipOutput/raxml_conserved	Output/5182a2e2d9fb2/ZipOutput/raxml_conserved/.DS_Store	Output/5182a2e2d9fb2/ZipOutput/raxml_conserved/RAxML_bootstrap.gene19.raxml.out	Output/5182a2e2d9fb2/ZipOutput/raxml_conserved/RAxML_bootstrap.gene15.raxml.out	Output/5182a2e2d9fb2/ZipOutput/raxml_conserved/RAxML_bootstrap.gene14.raxml.out	Output/5182a2e2d9fb2/ZipOutput/raxml_conserved/RAxML_bootstrap.gene9.raxml.out	Output/5182a2e2d9fb2/ZipOutput/raxml_conserved/RAxML_bootstrap.gene1.raxml.out
+[2J[H
+[2J[H
+Consensus tree program, version 3.69
+
+Settings for this run:
+ C         Consensus type (MRe, strict, MR, Ml):  Majority rule (extended)
+ O                                Outgroup root:  No, use as outgroup species  1
+ R                Trees to be treated as Rooted:  No
+ T           Terminal type (IBM PC, ANSI, none):  ANSI
+ 1                Print out the sets of species:  Yes
+ 2         Print indications of progress of run:  Yes
+ 3                               Print out tree:  Yes
+ 4               Write out trees onto tree file:  Yes
+
+Are these settings correct? (type Y or the letter for one to change)
+
+Consensus tree written to file "outtree"
+
+Output written to file "outfile"
+
+Done.
+
+runBootStrap.sh: line 18: cd: Output/5182a2e2d9fb2: No such file or directory
+======================================================================
+SumTrees - Phylogenetic Tree Split Support Summarization
+Version 3.3.1 (May 05 2011)
+By Jeet Sukumaran and Mark T. Holder
+(using the DendroPy Phylogenetic Computing Library Version 3.12.0)
+======================================================================
+
+SumTrees: Running in serial mode.
+SumTrees: 1 source(s) to be processed.
+SumTrees: Processing 1 of 1: 'FinalOutput.tre'
+SumTrees: Serial processing of 1 source(s) completed.
+SumTrees: Split counting completed:
+SumTrees:  - 500 trees considered in total for split support assessment.
+SumTrees:  - Trees treated as rooted.
+SumTrees:  - Trees treated as unweighted.
+SumTrees:  - 24 unique taxa across all trees.
+SumTrees:  - 2334 unique splits out of 23500 total splits counted.
+SumTrees:  - 2308 unique non-trivial splits out of 10500 total non-trivial
+          splits counted.
+SumTrees: Constructing clade consensus tree ...
+SumTrees: Consensus tree (0.500000 clade frequency threshold) constructed from
+          splits.
+SumTrees: Percentage of support for each split indicated by node labels.
+SumTrees: Mapping edge lengths ...
+SumTrees: Writing results ...
+SumTrees: Results written to: 'output.tre'.
+SumTrees: Summarization completed.
+SumTrees: Began at: 2013-05-02 23:35:36.445267.
+SumTrees: Ended at: 2013-05-02 23:35:39.557153.
+SumTrees: Run time: 0 hour(s), 00 minute(s), 03.111886 second(s).
+
+R version 2.15.1 (2012-06-22) -- "Roasted Marshmallows"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-unknown-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> phylip.to.ape <- function(tree)
++ 
++ {
++ 
++ # Get the labels of the tips (sequences)
++ 
++ seqnames <- tree$tip.label
++ 
++ numseqs <- length(seqnames)
++ 
++ # Get the number of internal nodes in the tree:
++ 
++ numinternalnodes <- tree$Nnode
++ 
++ # Get the bootstrap values
++ 
++ bootstraps <- tree$edge.length
++ 
++ # Get the edges for the tree
++ 
++ edges <- tree$edge
++ 
++ # For each edge, find the node at the end of the edge (closer to the tips
++ 
++ # of the tree):
++ 
++ numedges <- nrow(edges)
++ 
++ numnodes <- numinternalnodes + numseqs
++ 
++ mybootstraps <- numeric(numinternalnodes)
++ 
++ for (i in 1:numedges)
++ 
++ {
++ 
++ startnode <- edges[i,1]
++ 
++ endnode <- edges[i,2]
++ 
++ # Make sure the end node is not a tip:
++ 
++ if (endnode > numseqs)
++ 
++ {
++ 
++ # Get the bootstrap value for this node:
++ 
++ bootstrap <- bootstraps[i]
++ 
++ mybootstraps[endnode] = bootstrap
++ 
++ }
++ 
++ }
++ 
++ mybootstraps2 <- mybootstraps[(numseqs+1):(numnodes)]
++ 
++ tree$node.label <- mybootstraps2
++ 
++ 
++ 
++ return(tree)
++ 
++ }
+> 
+> library(phybase);
+Loading required package: Matrix
+Loading required package: lattice
+Loading required package: ape
+tripleML 0.1-1 loaded
+
+Attaching package: ‘phybase’
+
+The following object(s) are masked from ‘package:ape’:
+
+    write.dna
+
+> library(ape);
+> genetrees <- read.tree.string("output.tre",format="phylip")$tree;
+[1] "The tree is not a binary tree!"
+> tr <- read.tree(text = genetrees[1]);
+> 
+> #tree <- phylip.to.ape(tr) 
+> plot.phylo(tr,show.node.label=TRUE,cex=0.55)
+> #nodelabels(tree$node.label,cex=0.55) 
+> 
+> 
+> 
+Archive:  input.zip
+   creating: Input_bootstrap tree/
+  inflating: Input_bootstrap tree/500bptf_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500cand1_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500det1_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500disp1_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500disp2_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500dnah3_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500dsel_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500enc1_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500extl3_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500fat1_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500fat2_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500fat4_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500hyp_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500kbtbd2_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500kcnf1_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500kiaa1239_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500lig4_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500lphn2_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500mb21d2_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500panx2_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500pdp1_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500pik3cg_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500ppl_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500rag1_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500rag2_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500sacs_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500stlitrk1_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500zbed4_pranked_translate.phy_phyml_tree.phy  
+  inflating: Input_bootstrap tree/500zhx2_pranked_translate.phy_phyml_tree.phy  
+Output/51ae695b67a6f/ZipOutput	Output/51ae695b67a6f/ZipOutput/input.zip	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500sacs_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500mb21d2_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500panx2_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500bptf_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500fat4_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500pdp1_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500disp1_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500fat2_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500rag2_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500zbed4_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500extl3_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500pik3cg_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500stlitrk1_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500cand1_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500lphn2_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500det1_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500kbtbd2_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500disp2_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500hyp_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500enc1_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500dsel_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500ppl_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500kiaa1239_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500dnah3_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500kcnf1_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500lig4_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500rag1_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500fat1_pranked_translate.phy_phyml_tree.phy	Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500zhx2_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/input.zip
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500sacs_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500mb21d2_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500panx2_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500bptf_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500fat4_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500pdp1_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500disp1_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500fat2_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500rag2_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500zbed4_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500extl3_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500pik3cg_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500stlitrk1_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500cand1_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500lphn2_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500det1_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500kbtbd2_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500disp2_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500hyp_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500enc1_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500dsel_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500ppl_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500kiaa1239_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500dnah3_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500kcnf1_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500lig4_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500rag1_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500fat1_pranked_translate.phy_phyml_tree.phy
+Output/51ae695b67a6f/ZipOutput/Input_bootstrap tree/500zhx2_pranked_translate.phy_phyml_tree.phy
+[2J[H
+[2J[H
+Consensus tree program, version 3.69
+
+Settings for this run:
+ C         Consensus type (MRe, strict, MR, Ml):  Majority rule (extended)
+ O                                Outgroup root:  No, use as outgroup species  1
+ R                Trees to be treated as Rooted:  No
+ T           Terminal type (IBM PC, ANSI, none):  ANSI
+ 1                Print out the sets of species:  Yes
+ 2         Print indications of progress of run:  Yes
+ 3                               Print out tree:  Yes
+ 4               Write out trees onto tree file:  Yes
+
+Are these settings correct? (type Y or the letter for one to change)
+
+Consensus tree written to file "outtree"
+
+Output written to file "outfile"
+
+Done.
+
+runBootStrap.sh: line 18: cd: Output/51ae695b67a6f: No such file or directory
+======================================================================
+SumTrees - Phylogenetic Tree Split Support Summarization
+Version 3.3.1 (May 05 2011)
+By Jeet Sukumaran and Mark T. Holder
+(using the DendroPy Phylogenetic Computing Library Version 3.12.0)
+======================================================================
+
+SumTrees: Running in serial mode.
+SumTrees: 1 source(s) to be processed.
+SumTrees: Processing 1 of 1: 'FinalOutput.tre'
+SumTrees: Serial processing of 1 source(s) completed.
+SumTrees: Split counting completed:
+SumTrees:  - 500 trees considered in total for split support assessment.
+SumTrees:  - Trees treated as rooted.
+SumTrees:  - Trees treated as unweighted.
+SumTrees:  - 31 unique taxa across all trees.
+SumTrees:  - 96 unique splits out of 30500 total splits counted.
+SumTrees:  - 63 unique non-trivial splits out of 14000 total non-trivial
+          splits counted.
+SumTrees: Constructing clade consensus tree ...
+SumTrees: Consensus tree (0.500000 clade frequency threshold) constructed from
+          splits.
+SumTrees: Percentage of support for each split indicated by node labels.
+SumTrees: Mapping edge lengths ...
+SumTrees: Writing results ...
+SumTrees: Results written to: 'output.tre'.
+SumTrees: Summarization completed.
+SumTrees: Began at: 2013-06-05 15:37:02.916128.
+SumTrees: Ended at: 2013-06-05 15:37:06.667905.
+SumTrees: Run time: 0 hour(s), 00 minute(s), 03.751777 second(s).
+
+R version 2.15.1 (2012-06-22) -- "Roasted Marshmallows"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-unknown-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> phylip.to.ape <- function(tree)
++ 
++ {
++ 
++ # Get the labels of the tips (sequences)
++ 
++ seqnames <- tree$tip.label
++ 
++ numseqs <- length(seqnames)
++ 
++ # Get the number of internal nodes in the tree:
++ 
++ numinternalnodes <- tree$Nnode
++ 
++ # Get the bootstrap values
++ 
++ bootstraps <- tree$edge.length
++ 
++ # Get the edges for the tree
++ 
++ edges <- tree$edge
++ 
++ # For each edge, find the node at the end of the edge (closer to the tips
++ 
++ # of the tree):
++ 
++ numedges <- nrow(edges)
++ 
++ numnodes <- numinternalnodes + numseqs
++ 
++ mybootstraps <- numeric(numinternalnodes)
++ 
++ for (i in 1:numedges)
++ 
++ {
++ 
++ startnode <- edges[i,1]
++ 
++ endnode <- edges[i,2]
++ 
++ # Make sure the end node is not a tip:
++ 
++ if (endnode > numseqs)
++ 
++ {
++ 
++ # Get the bootstrap value for this node:
++ 
++ bootstrap <- bootstraps[i]
++ 
++ mybootstraps[endnode] = bootstrap
++ 
++ }
++ 
++ }
++ 
++ mybootstraps2 <- mybootstraps[(numseqs+1):(numnodes)]
++ 
++ tree$node.label <- mybootstraps2
++ 
++ 
++ 
++ return(tree)
++ 
++ }
+> 
+> library(phybase);
+Loading required package: Matrix
+Loading required package: lattice
+Loading required package: ape
+tripleML 0.1-1 loaded
+
+Attaching package: ‘phybase’
+
+The following object(s) are masked from ‘package:ape’:
+
+    write.dna
+
+> library(ape);
+> genetrees <- read.tree.string("output.tre",format="phylip")$tree;
+> tr <- read.tree(text = genetrees[1]);
+> 
+> #tree <- phylip.to.ape(tr) 
+> plot.phylo(tr,show.node.label=TRUE,cex=0.55)
+> #nodelabels(tree$node.label,cex=0.55) 
+> 
+> 
+> 
+Archive:  input.zip
+   creating: Bootstraps/
+  inflating: Bootstraps/tree_1.txt   
+  inflating: Bootstraps/tree_10.txt  
+  inflating: Bootstraps/tree_100.txt  
+  inflating: Bootstraps/tree_101.txt  
+  inflating: Bootstraps/tree_102.txt  
+  inflating: Bootstraps/tree_103.txt  
+  inflating: Bootstraps/tree_104.txt  
+  inflating: Bootstraps/tree_105.txt  
+  inflating: Bootstraps/tree_106.txt  
+  inflating: Bootstraps/tree_107.txt  
+  inflating: Bootstraps/tree_108.txt  
+  inflating: Bootstraps/tree_109.txt  
+  inflating: Bootstraps/tree_11.txt  
+  inflating: Bootstraps/tree_110.txt  
+  inflating: Bootstraps/tree_111.txt  
+  inflating: Bootstraps/tree_112.txt  
+  inflating: Bootstraps/tree_113.txt  
+  inflating: Bootstraps/tree_114.txt  
+  inflating: Bootstraps/tree_115.txt  
+  inflating: Bootstraps/tree_116.txt  
+  inflating: Bootstraps/tree_117.txt  
+  inflating: Bootstraps/tree_118.txt  
+  inflating: Bootstraps/tree_119.txt  
+  inflating: Bootstraps/tree_12.txt  
+  inflating: Bootstraps/tree_120.txt  
+  inflating: Bootstraps/tree_121.txt  
+  inflating: Bootstraps/tree_122.txt  
+  inflating: Bootstraps/tree_123.txt  
+  inflating: Bootstraps/tree_124.txt  
+  inflating: Bootstraps/tree_125.txt  
+  inflating: Bootstraps/tree_126.txt  
+  inflating: Bootstraps/tree_127.txt  
+  inflating: Bootstraps/tree_128.txt  
+  inflating: Bootstraps/tree_129.txt  
+  inflating: Bootstraps/tree_13.txt  
+  inflating: Bootstraps/tree_130.txt  
+  inflating: Bootstraps/tree_131.txt  
+  inflating: Bootstraps/tree_132.txt  
+  inflating: Bootstraps/tree_133.txt  
+  inflating: Bootstraps/tree_134.txt  
+  inflating: Bootstraps/tree_135.txt  
+  inflating: Bootstraps/tree_136.txt  
+  inflating: Bootstraps/tree_137.txt  
+  inflating: Bootstraps/tree_138.txt  
+  inflating: Bootstraps/tree_139.txt  
+  inflating: Bootstraps/tree_14.txt  
+  inflating: Bootstraps/tree_140.txt  
+  inflating: Bootstraps/tree_141.txt  
+  inflating: Bootstraps/tree_142.txt  
+  inflating: Bootstraps/tree_143.txt  
+  inflating: Bootstraps/tree_144.txt  
+  inflating: Bootstraps/tree_145.txt  
+  inflating: Bootstraps/tree_146.txt  
+  inflating: Bootstraps/tree_147.txt  
+  inflating: Bootstraps/tree_148.txt  
+  inflating: Bootstraps/tree_149.txt  
+  inflating: Bootstraps/tree_15.txt  
+  inflating: Bootstraps/tree_150.txt  
+  inflating: Bootstraps/tree_151.txt  
+  inflating: Bootstraps/tree_152.txt  
+  inflating: Bootstraps/tree_153.txt  
+  inflating: Bootstraps/tree_154.txt  
+  inflating: Bootstraps/tree_155.txt  
+  inflating: Bootstraps/tree_156.txt  
+  inflating: Bootstraps/tree_157.txt  
+  inflating: Bootstraps/tree_158.txt  
+  inflating: Bootstraps/tree_159.txt  
+  inflating: Bootstraps/tree_16.txt  
+  inflating: Bootstraps/tree_160.txt  
+  inflating: Bootstraps/tree_161.txt  
+  inflating: Bootstraps/tree_162.txt  
+  inflating: Bootstraps/tree_163.txt  
+  inflating: Bootstraps/tree_164.txt  
+  inflating: Bootstraps/tree_165.txt  
+  inflating: Bootstraps/tree_166.txt  
+  inflating: Bootstraps/tree_167.txt  
+  inflating: Bootstraps/tree_168.txt  
+  inflating: Bootstraps/tree_169.txt  
+  inflating: Bootstraps/tree_17.txt  
+  inflating: Bootstraps/tree_170.txt  
+  inflating: Bootstraps/tree_171.txt  
+  inflating: Bootstraps/tree_172.txt  
+  inflating: Bootstraps/tree_173.txt  
+  inflating: Bootstraps/tree_174.txt  
+  inflating: Bootstraps/tree_175.txt  
+  inflating: Bootstraps/tree_176.txt  
+  inflating: Bootstraps/tree_177.txt  
+  inflating: Bootstraps/tree_178.txt  
+  inflating: Bootstraps/tree_179.txt  
+  inflating: Bootstraps/tree_18.txt  
+  inflating: Bootstraps/tree_180.txt  
+  inflating: Bootstraps/tree_181.txt  
+  inflating: Bootstraps/tree_182.txt  
+  inflating: Bootstraps/tree_183.txt  
+  inflating: Bootstraps/tree_184.txt  
+  inflating: Bootstraps/tree_185.txt  
+  inflating: Bootstraps/tree_186.txt  
+  inflating: Bootstraps/tree_187.txt  
+  inflating: Bootstraps/tree_188.txt  
+  inflating: Bootstraps/tree_189.txt  
+  inflating: Bootstraps/tree_19.txt  
+  inflating: Bootstraps/tree_190.txt  
+  inflating: Bootstraps/tree_191.txt  
+  inflating: Bootstraps/tree_192.txt  
+  inflating: Bootstraps/tree_193.txt  
+  inflating: Bootstraps/tree_194.txt  
+  inflating: Bootstraps/tree_195.txt  
+  inflating: Bootstraps/tree_196.txt  
+  inflating: Bootstraps/tree_197.txt  
+  inflating: Bootstraps/tree_198.txt  
+  inflating: Bootstraps/tree_199.txt  
+  inflating: Bootstraps/tree_2.txt   
+  inflating: Bootstraps/tree_20.txt  
+  inflating: Bootstraps/tree_200.txt  
+  inflating: Bootstraps/tree_201.txt  
+  inflating: Bootstraps/tree_202.txt  
+  inflating: Bootstraps/tree_203.txt  
+  inflating: Bootstraps/tree_204.txt  
+  inflating: Bootstraps/tree_205.txt  
+  inflating: Bootstraps/tree_206.txt  
+  inflating: Bootstraps/tree_207.txt  
+  inflating: Bootstraps/tree_208.txt  
+  inflating: Bootstraps/tree_209.txt  
+  inflating: Bootstraps/tree_21.txt  
+  inflating: Bootstraps/tree_210.txt  
+  inflating: Bootstraps/tree_211.txt  
+  inflating: Bootstraps/tree_212.txt  
+  inflating: Bootstraps/tree_213.txt  
+  inflating: Bootstraps/tree_214.txt  
+  inflating: Bootstraps/tree_215.txt  
+  inflating: Bootstraps/tree_216.txt  
+  inflating: Bootstraps/tree_217.txt  
+  inflating: Bootstraps/tree_218.txt  
+  inflating: Bootstraps/tree_219.txt  
+  inflating: Bootstraps/tree_22.txt  
+  inflating: Bootstraps/tree_220.txt  
+  inflating: Bootstraps/tree_221.txt  
+  inflating: Bootstraps/tree_222.txt  
+  inflating: Bootstraps/tree_223.txt  
+  inflating: Bootstraps/tree_224.txt  
+  inflating: Bootstraps/tree_225.txt  
+  inflating: Bootstraps/tree_226.txt  
+  inflating: Bootstraps/tree_227.txt  
+  inflating: Bootstraps/tree_228.txt  
+  inflating: Bootstraps/tree_229.txt  
+  inflating: Bootstraps/tree_23.txt  
+  inflating: Bootstraps/tree_230.txt  
+  inflating: Bootstraps/tree_231.txt  
+  inflating: Bootstraps/tree_232.txt  
+  inflating: Bootstraps/tree_233.txt  
+  inflating: Bootstraps/tree_24.txt  
+  inflating: Bootstraps/tree_25.txt  
+  inflating: Bootstraps/tree_26.txt  
+  inflating: Bootstraps/tree_27.txt  
+  inflating: Bootstraps/tree_28.txt  
+  inflating: Bootstraps/tree_29.txt  
+  inflating: Bootstraps/tree_3.txt   
+  inflating: Bootstraps/tree_30.txt  
+  inflating: Bootstraps/tree_31.txt  
+  inflating: Bootstraps/tree_32.txt  
+  inflating: Bootstraps/tree_33.txt  
+  inflating: Bootstraps/tree_34.txt  
+  inflating: Bootstraps/tree_35.txt  
+  inflating: Bootstraps/tree_36.txt  
+  inflating: Bootstraps/tree_37.txt  
+  inflating: Bootstraps/tree_38.txt  
+  inflating: Bootstraps/tree_39.txt  
+  inflating: Bootstraps/tree_4.txt   
+  inflating: Bootstraps/tree_40.txt  
+  inflating: Bootstraps/tree_41.txt  
+  inflating: Bootstraps/tree_42.txt  
+  inflating: Bootstraps/tree_43.txt  
+  inflating: Bootstraps/tree_44.txt  
+  inflating: Bootstraps/tree_45.txt  
+  inflating: Bootstraps/tree_46.txt  
+  inflating: Bootstraps/tree_47.txt  
+  inflating: Bootstraps/tree_48.txt  
+  inflating: Bootstraps/tree_49.txt  
+  inflating: Bootstraps/tree_5.txt   
+  inflating: Bootstraps/tree_50.txt  
+  inflating: Bootstraps/tree_51.txt  
+  inflating: Bootstraps/tree_52.txt  
+  inflating: Bootstraps/tree_53.txt  
+  inflating: Bootstraps/tree_54.txt  
+  inflating: Bootstraps/tree_55.txt  
+  inflating: Bootstraps/tree_56.txt  
+  inflating: Bootstraps/tree_57.txt  
+  inflating: Bootstraps/tree_58.txt  
+  inflating: Bootstraps/tree_59.txt  
+  inflating: Bootstraps/tree_6.txt   
+  inflating: Bootstraps/tree_60.txt  
+  inflating: Bootstraps/tree_61.txt  
+  inflating: Bootstraps/tree_62.txt  
+  inflating: Bootstraps/tree_63.txt  
+  inflating: Bootstraps/tree_64.txt  
+  inflating: Bootstraps/tree_65.txt  
+  inflating: Bootstraps/tree_66.txt  
+  inflating: Bootstraps/tree_67.txt  
+  inflating: Bootstraps/tree_68.txt  
+  inflating: Bootstraps/tree_69.txt  
+  inflating: Bootstraps/tree_7.txt   
+  inflating: Bootstraps/tree_70.txt  
+  inflating: Bootstraps/tree_71.txt  
+  inflating: Bootstraps/tree_72.txt  
+  inflating: Bootstraps/tree_73.txt  
+  inflating: Bootstraps/tree_74.txt  
+  inflating: Bootstraps/tree_75.txt  
+  inflating: Bootstraps/tree_76.txt  
+  inflating: Bootstraps/tree_77.txt  
+  inflating: Bootstraps/tree_78.txt  
+  inflating: Bootstraps/tree_79.txt  
+  inflating: Bootstraps/tree_8.txt   
+  inflating: Bootstraps/tree_80.txt  
+  inflating: Bootstraps/tree_81.txt  
+  inflating: Bootstraps/tree_82.txt  
+  inflating: Bootstraps/tree_83.txt  
+  inflating: Bootstraps/tree_84.txt  
+  inflating: Bootstraps/tree_85.txt  
+  inflating: Bootstraps/tree_86.txt  
+  inflating: Bootstraps/tree_87.txt  
+  inflating: Bootstraps/tree_88.txt  
+  inflating: Bootstraps/tree_89.txt  
+  inflating: Bootstraps/tree_9.txt   
+  inflating: Bootstraps/tree_90.txt  
+  inflating: Bootstraps/tree_91.txt  
+  inflating: Bootstraps/tree_92.txt  
+  inflating: Bootstraps/tree_93.txt  
+  inflating: Bootstraps/tree_94.txt  
+  inflating: Bootstraps/tree_95.txt  
+  inflating: Bootstraps/tree_96.txt  
+  inflating: Bootstraps/tree_97.txt  
+  inflating: Bootstraps/tree_98.txt  
+  inflating: Bootstraps/tree_99.txt  
+Output/51b31a6ac388f/ZipOutput	Output/51b31a6ac388f/ZipOutput/input.zip	Output/51b31a6ac388f/ZipOutput/Bootstraps	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_228.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_156.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_114.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_221.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_8.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_217.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_76.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_56.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_225.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_102.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_193.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_83.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_58.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_141.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_3.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_227.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_75.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_112.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_191.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_101.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_202.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_117.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_97.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_53.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_1.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_206.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_94.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_6.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_131.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_11.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_62.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_89.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_176.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_192.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_152.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_31.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_182.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_196.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_231.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_153.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_162.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_105.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_175.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_98.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_60.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_220.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_230.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_199.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_54.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_19.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_70.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_185.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_128.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_122.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_179.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_163.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_144.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_198.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_28.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_142.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_73.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_12.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_2.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_150.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_63.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_232.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_29.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_158.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_64.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_80.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_177.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_229.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_22.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_205.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_35.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_214.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_118.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_126.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_154.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_41.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_140.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_167.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_171.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_106.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_99.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_132.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_169.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_143.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_91.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_180.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_226.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_59.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_37.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_119.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_88.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_149.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_21.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_184.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_72.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_125.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_223.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_34.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_100.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_92.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_195.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_65.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_51.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_71.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_121.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_127.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_113.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_123.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_46.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_9.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_136.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_26.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_172.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_86.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_77.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_30.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_110.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_161.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_95.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_224.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_189.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_82.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_36.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_104.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_133.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_130.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_129.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_164.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_134.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_78.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_67.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_38.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_57.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_111.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_33.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_87.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_79.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_188.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_68.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_181.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_81.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_15.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_213.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_93.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_48.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_90.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_69.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_96.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_85.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_216.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_212.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_148.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_47.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_10.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_194.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_124.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_23.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_109.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_157.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_55.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_13.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_27.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_16.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_135.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_20.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_201.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_210.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_233.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_139.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_166.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_24.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_203.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_222.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_155.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_215.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_39.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_137.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_7.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_115.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_43.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_45.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_61.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_187.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_17.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_40.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_5.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_32.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_146.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_103.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_42.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_120.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_165.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_186.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_160.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_219.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_190.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_145.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_218.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_200.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_52.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_174.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_108.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_66.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_209.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_178.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_74.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_18.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_25.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_207.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_151.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_183.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_107.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_147.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_159.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_49.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_168.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_44.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_197.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_204.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_14.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_4.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_170.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_173.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_50.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_116.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_208.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_138.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_84.txt	Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_211.txt
+Output/51b31a6ac388f/ZipOutput/input.zip
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_228.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_156.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_114.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_221.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_8.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_217.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_76.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_56.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_225.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_102.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_193.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_83.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_58.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_141.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_3.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_227.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_75.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_112.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_191.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_101.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_202.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_117.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_97.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_53.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_1.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_206.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_94.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_6.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_131.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_11.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_62.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_89.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_176.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_192.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_152.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_31.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_182.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_196.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_231.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_153.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_162.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_105.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_175.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_98.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_60.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_220.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_230.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_199.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_54.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_19.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_70.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_185.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_128.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_122.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_179.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_163.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_144.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_198.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_28.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_142.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_73.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_12.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_2.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_150.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_63.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_232.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_29.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_158.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_64.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_80.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_177.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_229.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_22.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_205.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_35.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_214.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_118.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_126.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_154.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_41.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_140.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_167.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_171.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_106.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_99.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_132.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_169.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_143.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_91.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_180.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_226.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_59.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_37.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_119.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_88.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_149.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_21.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_184.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_72.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_125.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_223.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_34.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_100.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_92.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_195.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_65.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_51.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_71.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_121.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_127.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_113.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_123.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_46.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_9.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_136.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_26.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_172.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_86.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_77.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_30.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_110.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_161.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_95.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_224.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_189.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_82.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_36.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_104.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_133.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_130.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_129.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_164.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_134.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_78.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_67.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_38.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_57.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_111.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_33.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_87.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_79.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_188.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_68.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_181.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_81.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_15.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_213.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_93.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_48.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_90.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_69.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_96.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_85.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_216.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_212.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_148.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_47.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_10.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_194.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_124.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_23.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_109.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_157.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_55.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_13.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_27.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_16.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_135.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_20.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_201.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_210.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_233.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_139.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_166.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_24.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_203.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_222.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_155.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_215.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_39.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_137.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_7.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_115.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_43.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_45.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_61.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_187.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_17.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_40.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_5.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_32.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_146.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_103.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_42.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_120.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_165.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_186.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_160.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_219.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_190.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_145.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_218.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_200.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_52.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_174.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_108.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_66.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_209.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_178.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_74.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_18.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_25.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_207.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_151.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_183.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_107.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_147.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_159.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_49.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_168.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_44.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_197.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_204.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_14.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_4.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_170.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_173.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_50.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_116.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_208.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_138.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_84.txt
+Output/51b31a6ac388f/ZipOutput/Bootstraps/tree_211.txt
+[2J[H
+[2J[H
+Consensus tree program, version 3.69
+
+Settings for this run:
+ C         Consensus type (MRe, strict, MR, Ml):  Majority rule (extended)
+ O                                Outgroup root:  No, use as outgroup species  1
+ R                Trees to be treated as Rooted:  No
+ T           Terminal type (IBM PC, ANSI, none):  ANSI
+ 1                Print out the sets of species:  Yes
+ 2         Print indications of progress of run:  Yes
+ 3                               Print out tree:  Yes
+ 4               Write out trees onto tree file:  Yes
+
+Are these settings correct? (type Y or the letter for one to change)
+
+
+ERROR: Unexpected end-of-file.
+
+runBootStrap.sh: line 18: cd: Output/51b31a6ac388f/: No such file or directory
+======================================================================
+SumTrees - Phylogenetic Tree Split Support Summarization
+Version 3.3.1 (May 05 2011)
+By Jeet Sukumaran and Mark T. Holder
+(using the DendroPy Phylogenetic Computing Library Version 3.12.0)
+======================================================================
+
+SumTrees: Running in serial mode.
+SumTrees: 1 source(s) to be processed.
+SumTrees: Processing 1 of 1: 'FinalOutput.tre'
+Traceback (most recent call last):
+  File "/usr/local/src/DendroPy-3.12.0/build/scripts-2.6/sumtrees.py", line 1049, in <module>
+    main_cli()
+  File "/usr/local/src/DendroPy-3.12.0/build/scripts-2.6/sumtrees.py", line 722, in main_cli
+    messenger=messenger)
+  File "/usr/local/src/DendroPy-3.12.0/build/scripts-2.6/sumtrees.py", line 292, in process_sources_serial
+    as_rooted=is_rooted)):
+  File "/usr/lib/python2.6/site-packages/DendroPy-3.12.0-py2.6.egg/dendropy/dataio/ioclient.py", line 121, in tree_source_iter
+    tree_iter = _GLOBAL_DATA_SCHEMA_REGISTRY.tree_source_iter(stream, schema, **kwargs)
+  File "/usr/lib/python2.6/site-packages/DendroPy-3.12.0-py2.6.egg/dendropy/dataio/dataschema.py", line 105, in tree_source_iter
+    return self.formats[name].get_tree_source_iter(stream, **kwargs)
+  File "/usr/lib/python2.6/site-packages/DendroPy-3.12.0-py2.6.egg/dendropy/dataio/dataschema.py", line 64, in get_tree_source_iter
+    return self.tree_source_iter(stream, **kwargs)
+  File "/usr/lib/python2.6/site-packages/DendroPy-3.12.0-py2.6.egg/dendropy/dataio/nexustreeiter.py", line 70, in generalized_tree_source_iter
+    if token.upper() == "#NEXUS":
+AttributeError: 'NoneType' object has no attribute 'upper'
+
+R version 2.15.1 (2012-06-22) -- "Roasted Marshmallows"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-unknown-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> phylip.to.ape <- function(tree)
++ 
++ {
++ 
++ # Get the labels of the tips (sequences)
++ 
++ seqnames <- tree$tip.label
++ 
++ numseqs <- length(seqnames)
++ 
++ # Get the number of internal nodes in the tree:
++ 
++ numinternalnodes <- tree$Nnode
++ 
++ # Get the bootstrap values
++ 
++ bootstraps <- tree$edge.length
++ 
++ # Get the edges for the tree
++ 
++ edges <- tree$edge
++ 
++ # For each edge, find the node at the end of the edge (closer to the tips
++ 
++ # of the tree):
++ 
++ numedges <- nrow(edges)
++ 
++ numnodes <- numinternalnodes + numseqs
++ 
++ mybootstraps <- numeric(numinternalnodes)
++ 
++ for (i in 1:numedges)
++ 
++ {
++ 
++ startnode <- edges[i,1]
++ 
++ endnode <- edges[i,2]
++ 
++ # Make sure the end node is not a tip:
++ 
++ if (endnode > numseqs)
++ 
++ {
++ 
++ # Get the bootstrap value for this node:
++ 
++ bootstrap <- bootstraps[i]
++ 
++ mybootstraps[endnode] = bootstrap
++ 
++ }
++ 
++ }
++ 
++ mybootstraps2 <- mybootstraps[(numseqs+1):(numnodes)]
++ 
++ tree$node.label <- mybootstraps2
++ 
++ 
++ 
++ return(tree)
++ 
++ }
+> 
+> library(phybase);
+Loading required package: Matrix
+Loading required package: lattice
+Loading required package: ape
+tripleML 0.1-1 loaded
+
+Attaching package: ‘phybase’
+
+The following object(s) are masked from ‘package:ape’:
+
+    write.dna
+
+> library(ape);
+> genetrees <- read.tree.string("output.tre",format="phylip")$tree;
+> tr <- read.tree(text = genetrees[1]);
+> 
+> #tree <- phylip.to.ape(tr) 
+> plot.phylo(tr,show.node.label=TRUE,cex=0.55)
+> #nodelabels(tree$node.label,cex=0.55) 
+> 
+> 
+> 
+Archive:  input.zip
+  inflating: 15finch_phyml_STRAW_rooted.boot0.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot1.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot10.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot11.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot12.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot13.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot14.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot15.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot16.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot17.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot18.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot19.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot2.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot20.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot21.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot22.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot23.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot24.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot25.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot26.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot27.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot28.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot29.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot3.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot30.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot31.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot32.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot33.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot34.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot35.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot36.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot37.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot38.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot39.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot4.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot40.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot41.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot42.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot43.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot44.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot45.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot46.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot47.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot48.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot49.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot5.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot50.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot51.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot52.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot53.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot54.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot55.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot56.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot57.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot58.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot59.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot6.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot60.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot61.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot62.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot63.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot64.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot65.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot66.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot67.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot68.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot69.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot7.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot70.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot71.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot72.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot73.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot74.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot75.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot76.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot77.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot78.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot79.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot8.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot80.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot81.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot82.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot83.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot84.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot85.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot86.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot87.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot88.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot89.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot9.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot90.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot91.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot92.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot93.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot94.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot95.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot96.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot97.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot98.tre  
+  inflating: 15finch_phyml_STRAW_rooted.boot99.tre  
+java.io.FileNotFoundException: Output/52b1e9a33f20e/Bootstrap/SNA.txt (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:137)
+	at java.io.FileInputStream.<init>(FileInputStream.java:96)
+	at CreateInputMatrix.main(CreateInputMatrix.java:31)
+Output/52b1e9a33f20e/ZipOutput	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot72.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot81.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot86.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot70.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot45.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot73.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot92.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot51.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot49.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot34.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot62.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot46.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot96.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot63.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot38.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot69.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot67.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot74.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot4.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot87.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot85.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot26.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot15.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot25.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot35.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot5.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot84.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot30.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot41.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot11.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot40.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot47.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot12.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot13.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot57.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot31.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot88.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot95.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot75.tre	Output/52b1e9a33f20e/ZipOutput/input.zip	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot1.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot90.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot24.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot64.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot22.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot32.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot6.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot99.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot83.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot7.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot91.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot44.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot65.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot76.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot78.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot39.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot14.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot59.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot50.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot77.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot17.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot71.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot93.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot2.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot98.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot58.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot28.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot52.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot60.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot61.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot53.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot8.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot37.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot10.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot0.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot16.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot36.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot56.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot80.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot18.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot9.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot42.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot94.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot21.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot3.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot66.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot27.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot89.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot19.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot54.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot20.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot33.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot82.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot55.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot43.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot79.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot97.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot48.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot29.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot68.tre	Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot23.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot72.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot81.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot86.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot70.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot45.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot73.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot92.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot51.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot49.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot34.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot62.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot46.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot96.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot63.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot38.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot69.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot67.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot74.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot4.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot87.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot85.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot26.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot15.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot25.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot35.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot5.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot84.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot30.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot41.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot11.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot40.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot47.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot12.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot13.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot57.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot31.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot88.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot95.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot75.tre
+Output/52b1e9a33f20e/ZipOutput/input.zip
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot1.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot90.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot24.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot64.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot22.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot32.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot6.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot99.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot83.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot7.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot91.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot44.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot65.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot76.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot78.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot39.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot14.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot59.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot50.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot77.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot17.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot71.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot93.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot2.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot98.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot58.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot28.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot52.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot60.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot61.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot53.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot8.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot37.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot10.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot0.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot16.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot36.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot56.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot80.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot18.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot9.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot42.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot94.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot21.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot3.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot66.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot27.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot89.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot19.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot54.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot20.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot33.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot82.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot55.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot43.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot79.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot97.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot48.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot29.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot68.tre
+Output/52b1e9a33f20e/ZipOutput/15finch_phyml_STRAW_rooted.boot23.tre
+[2J[H
+[2J[H
+Consensus tree program, version 3.69
+
+Settings for this run:
+ C         Consensus type (MRe, strict, MR, Ml):  Majority rule (extended)
+ O                                Outgroup root:  No, use as outgroup species  1
+ R                Trees to be treated as Rooted:  No
+ T           Terminal type (IBM PC, ANSI, none):  ANSI
+ 1                Print out the sets of species:  Yes
+ 2         Print indications of progress of run:  Yes
+ 3                               Print out tree:  Yes
+ 4               Write out trees onto tree file:  Yes
+
+Are these settings correct? (type Y or the letter for one to change)
+
+Consensus tree written to file "outtree"
+
+Output written to file "outfile"
+
+Done.
+
+runBootStrap.sh: line 18: cd: Output/52b1e9a33f20e/: No such file or directory
+======================================================================
+SumTrees - Phylogenetic Tree Split Support Summarization
+Version 3.3.1 (May 05 2011)
+By Jeet Sukumaran and Mark T. Holder
+(using the DendroPy Phylogenetic Computing Library Version 3.12.0)
+======================================================================
+
+SumTrees: Running in serial mode.
+SumTrees: 1 source(s) to be processed.
+SumTrees: Processing 1 of 1: 'FinalOutput.tre'
+SumTrees: (processing) 'FinalOutput.tre': tree at offset 500
+SumTrees: (processing) 'FinalOutput.tre': tree at offset 1000
+SumTrees: (processing) 'FinalOutput.tre': tree at offset 1500
+SumTrees: (processing) 'FinalOutput.tre': tree at offset 2000
+SumTrees: (processing) 'FinalOutput.tre': tree at offset 2500
+SumTrees: (processing) 'FinalOutput.tre': tree at offset 3000
+SumTrees: Serial processing of 1 source(s) completed.
+SumTrees: Split counting completed:
+SumTrees:  - 3100 trees considered in total for split support assessment.
+SumTrees:  - Trees treated as rooted.
+SumTrees:  - Trees treated as unweighted.
+SumTrees:  - 15 unique taxa across all trees.
+SumTrees:  - 47 unique splits out of 89900 total splits counted.
+SumTrees:  - 30 unique non-trivial splits out of 37200 total non-trivial
+          splits counted.
+SumTrees: Constructing clade consensus tree ...
+SumTrees: Consensus tree (0.000000 clade frequency threshold) constructed from
+          splits.
+SumTrees: Percentage of support for each split indicated by node labels.
+SumTrees: Mapping edge lengths ...
+SumTrees: Writing results ...
+SumTrees: Results written to: 'output.tre'.
+SumTrees: Summarization completed.
+SumTrees: Began at: 2013-12-19 05:02:14.082102.
+SumTrees: Ended at: 2013-12-19 05:02:25.344747.
+SumTrees: Run time: 0 hour(s), 00 minute(s), 11.262645 second(s).
+
+R version 2.15.1 (2012-06-22) -- "Roasted Marshmallows"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-unknown-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> phylip.to.ape <- function(tree)
++ 
++ {
++ 
++ # Get the labels of the tips (sequences)
++ 
++ seqnames <- tree$tip.label
++ 
++ numseqs <- length(seqnames)
++ 
++ # Get the number of internal nodes in the tree:
++ 
++ numinternalnodes <- tree$Nnode
++ 
++ # Get the bootstrap values
++ 
++ bootstraps <- tree$edge.length
++ 
++ # Get the edges for the tree
++ 
++ edges <- tree$edge
++ 
++ # For each edge, find the node at the end of the edge (closer to the tips
++ 
++ # of the tree):
++ 
++ numedges <- nrow(edges)
++ 
++ numnodes <- numinternalnodes + numseqs
++ 
++ mybootstraps <- numeric(numinternalnodes)
++ 
++ for (i in 1:numedges)
++ 
++ {
++ 
++ startnode <- edges[i,1]
++ 
++ endnode <- edges[i,2]
++ 
++ # Make sure the end node is not a tip:
++ 
++ if (endnode > numseqs)
++ 
++ {
++ 
++ # Get the bootstrap value for this node:
++ 
++ bootstrap <- bootstraps[i]
++ 
++ mybootstraps[endnode] = bootstrap
++ 
++ }
++ 
++ }
++ 
++ mybootstraps2 <- mybootstraps[(numseqs+1):(numnodes)]
++ 
++ tree$node.label <- mybootstraps2
++ 
++ 
++ 
++ return(tree)
++ 
++ }
+> 
+> library(phybase);
+Loading required package: Matrix
+Loading required package: lattice
+Loading required package: ape
+tripleML 0.1-1 loaded
+
+Attaching package: ‘phybase’
+
+The following object(s) are masked from ‘package:ape’:
+
+    write.dna
+
+> library(ape);
+> genetrees <- read.tree.string("output.tre",format="phylip")$tree;
+> tr <- read.tree(text = genetrees[1]);
+> 
+> #tree <- phylip.to.ape(tr) 
+> plot.phylo(tr,show.node.label=TRUE,cex=0.55)
+> #nodelabels(tree$node.label,cex=0.55) 
+> 
+> 
+> 
+replace bootstrap/02-03-mt-root.phy.tre? [y]es, [n]o, [A]ll, [N]one, [r]ename:  NULL
+(EOF or read error, treating as "[N]one" ...)
+cp: cannot stat `Output/52c79dd54d17d//FinalOutput.tre': No such file or directory
+cp: cannot stat `outtree': No such file or directory
+runBootStrap.sh: line 20: cd: Output/52c79dd54d17d/: No such file or directory
+Loading required package: Matrix
+Loading required package: lattice
+Loading required package: ape
+
+Attaching package: ‘phybase’
+
+The following object(s) are masked from ‘package:ape’:
+
+    write.dna
+
+Error in file(file, "r") : cannot open the connection
+Calls: read.tree.string -> scan -> file
+In addition: Warning message:
+In file(file, "r") :
+  cannot open file 'output.tre': No such file or directory
+Execution halted
+cp: cannot stat `Output/52c79dd54d17d//FinalOutput.tre': No such file or directory
+cp: cannot stat `outtree': No such file or directory
+runBootStrap.sh: line 20: cd: Output/52c79dd54d17d/: No such file or directory
+Loading required package: Matrix
+Loading required package: lattice
+Loading required package: ape
+
+Attaching package: ‘phybase’
+
+The following object(s) are masked from ‘package:ape’:
+
+    write.dna
+
+Error in file(file, "r") : cannot open the connection
+Calls: read.tree.string -> scan -> file
+In addition: Warning message:
+In file(file, "r") :
+  cannot open file 'output.tre': No such file or directory
+Execution halted
+cp: cannot stat `Output/52c79dd54d17d//FinalOutput.tre': No such file or directory
+cp: cannot stat `outtree': No such file or directory
+runBootStrap.sh: line 20: cd: Output/52c79dd54d17d/: No such file or directory
+Loading required package: Matrix
+Loading required package: lattice
+Loading required package: ape
+
+Attaching package: ‘phybase’
+
+The following object(s) are masked from ‘package:ape’:
+
+    write.dna
+
+Error in file(file, "r") : cannot open the connection
+Calls: read.tree.string -> scan -> file
+In addition: Warning message:
+In file(file, "r") :
+  cannot open file 'output.tre': No such file or directory
+Execution halted
+runBootStrap.sh: line 20: cd: Output/52c7a1c5b4a6c/: No such file or directory
+======================================================================
+SumTrees - Phylogenetic Tree Split Support Summarization
+Version 3.3.1 (May 05 2011)
+By Jeet Sukumaran and Mark T. Holder
+(using the DendroPy Phylogenetic Computing Library Version 3.12.0)
+======================================================================
+
+SumTrees: Running in serial mode.
+SumTrees: 1 source(s) to be processed.
+SumTrees: Processing 1 of 1: 'FinalOutput.tre'
+SumTrees: Serial processing of 1 source(s) completed.
+SumTrees: Split counting completed:
+SumTrees:  - 100 trees considered in total for split support assessment.
+SumTrees:  - Trees treated as rooted.
+SumTrees:  - Trees treated as unweighted.
+SumTrees:  - 37 unique taxa across all trees.
+SumTrees:  - 144 unique splits out of 7300 total splits counted.
+SumTrees:  - 104 unique non-trivial splits out of 3400 total non-trivial
+          splits counted.
+SumTrees: Constructing clade consensus tree ...
+SumTrees: Consensus tree (0.000000 clade frequency threshold) constructed from
+          splits.
+SumTrees: Percentage of support for each split indicated by node labels.
+SumTrees: Mapping edge lengths ...
+SumTrees: Writing results ...
+SumTrees: Results written to: 'output.tre'.
+SumTrees: Summarization completed.
+SumTrees: Began at: 2014-01-05 00:19:31.726455.
+SumTrees: Ended at: 2014-01-05 00:19:32.646987.
+SumTrees: Run time: 0 hour(s), 00 minute(s), 00.920532 second(s).
+Loading required package: Matrix
+Loading required package: lattice
+Loading required package: ape
+
+Attaching package: ‘phybase’
+
+The following object(s) are masked from ‘package:ape’:
+
+    write.dna
+
+Archive:  input.zip
+   creating: Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/
+  inflating: Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/Coryphopterus_COI_RAxML_bootstrap.tre  
+   creating: __MACOSX/
+   creating: __MACOSX/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/
+  inflating: __MACOSX/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/._Coryphopterus_COI_RAxML_bootstrap.tre  
+  inflating: Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/Coryphopterus_GLYT_RAxML_bootstrap.tre  
+  inflating: __MACOSX/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/._Coryphopterus_GLYT_RAxML_bootstrap.tre  
+  inflating: Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/Coryphopterus_RAG1_RAxML_bootstrap.tre  
+  inflating: __MACOSX/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/._Coryphopterus_RAG1_RAxML_bootstrap.tre  
+  inflating: Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/Coryphopterus_RYR3_RAxML_bootstrap.tre  
+  inflating: __MACOSX/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/._Coryphopterus_RYR3_RAxML_bootstrap.tre  
+Output/52f9331b0773a/ZipOutput	Output/52f9331b0773a/ZipOutput/input.zip	Output/52f9331b0773a/ZipOutput/__MACOSX	Output/52f9331b0773a/ZipOutput/__MACOSX/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final	Output/52f9331b0773a/ZipOutput/__MACOSX/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/._Coryphopterus_COI_RAxML_bootstrap.tre	Output/52f9331b0773a/ZipOutput/__MACOSX/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/._Coryphopterus_RAG1_RAxML_bootstrap.tre	Output/52f9331b0773a/ZipOutput/__MACOSX/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/._Coryphopterus_RYR3_RAxML_bootstrap.tre	Output/52f9331b0773a/ZipOutput/__MACOSX/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/._Coryphopterus_GLYT_RAxML_bootstrap.tre	Output/52f9331b0773a/ZipOutput/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final	Output/52f9331b0773a/ZipOutput/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/Coryphopterus_GLYT_RAxML_bootstrap.tre	Output/52f9331b0773a/ZipOutput/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/Coryphopterus_RYR3_RAxML_bootstrap.tre	Output/52f9331b0773a/ZipOutput/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/Coryphopterus_RAG1_RAxML_bootstrap.tre	Output/52f9331b0773a/ZipOutput/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/Coryphopterus_COI_RAxML_bootstrap.tre
+Output/52f9331b0773a/ZipOutput/input.zip
+Output/52f9331b0773a/ZipOutput/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/Coryphopterus_GLYT_RAxML_bootstrap.tre
+Output/52f9331b0773a/ZipOutput/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/Coryphopterus_RYR3_RAxML_bootstrap.tre
+Output/52f9331b0773a/ZipOutput/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/Coryphopterus_RAG1_RAxML_bootstrap.tre
+Output/52f9331b0773a/ZipOutput/Coryphopterus_bootstrapCOIRAG1RYR3GLYT_final/Coryphopterus_COI_RAxML_bootstrap.tre
+[2J[H
+[2J[H
+Consensus tree program, version 3.69
+
+Settings for this run:
+ C         Consensus type (MRe, strict, MR, Ml):  Majority rule (extended)
+ O                                Outgroup root:  No, use as outgroup species  1
+ R                Trees to be treated as Rooted:  No
+ T           Terminal type (IBM PC, ANSI, none):  ANSI
+ 1                Print out the sets of species:  Yes
+ 2         Print indications of progress of run:  Yes
+ 3                               Print out tree:  Yes
+ 4               Write out trees onto tree file:  Yes
+
+Are these settings correct? (type Y or the letter for one to change)
+
+
+ERROR: Unexpected end-of-file.
+
+runBootStrap.sh: line 20: cd: Output/52f9331b0773a: No such file or directory
+======================================================================
+SumTrees - Phylogenetic Tree Split Support Summarization
+Version 3.3.1 (May 05 2011)
+By Jeet Sukumaran and Mark T. Holder
+(using the DendroPy Phylogenetic Computing Library Version 3.12.0)
+======================================================================
+
+SumTrees: Running in serial mode.
+SumTrees: 1 source(s) to be processed.
+SumTrees: Processing 1 of 1: 'FinalOutput.tre'
+Traceback (most recent call last):
+  File "/usr/local/src/DendroPy-3.12.0/build/scripts-2.6/sumtrees.py", line 1049, in <module>
+    main_cli()
+  File "/usr/local/src/DendroPy-3.12.0/build/scripts-2.6/sumtrees.py", line 722, in main_cli
+    messenger=messenger)
+  File "/usr/local/src/DendroPy-3.12.0/build/scripts-2.6/sumtrees.py", line 292, in process_sources_serial
+    as_rooted=is_rooted)):
+  File "/usr/lib/python2.6/site-packages/DendroPy-3.12.0-py2.6.egg/dendropy/dataio/ioclient.py", line 121, in tree_source_iter
+    tree_iter = _GLOBAL_DATA_SCHEMA_REGISTRY.tree_source_iter(stream, schema, **kwargs)
+  File "/usr/lib/python2.6/site-packages/DendroPy-3.12.0-py2.6.egg/dendropy/dataio/dataschema.py", line 105, in tree_source_iter
+    return self.formats[name].get_tree_source_iter(stream, **kwargs)
+  File "/usr/lib/python2.6/site-packages/DendroPy-3.12.0-py2.6.egg/dendropy/dataio/dataschema.py", line 64, in get_tree_source_iter
+    return self.tree_source_iter(stream, **kwargs)
+  File "/usr/lib/python2.6/site-packages/DendroPy-3.12.0-py2.6.egg/dendropy/dataio/nexustreeiter.py", line 70, in generalized_tree_source_iter
+    if token.upper() == "#NEXUS":
+AttributeError: 'NoneType' object has no attribute 'upper'
+Loading required package: Matrix
+Loading required package: lattice
+Loading required package: ape
+
+Attaching package: ‘phybase’
+
+The following object(s) are masked from ‘package:ape’:
+
+    write.dna
+
+Error in if (tp[3] != "") obj$node.label <- tp[3] : 
+  missing value where TRUE/FALSE needed
+Calls: read.tree -> lapply -> FUN
+Execution halted
+runMPESTBoot.sh: line 1: MERT/outputbootstrap: No such file or directory
+runMPESTBoot.sh: line 2: MERT/displayboot: No such file or directory
+java.io.FileNotFoundException: Output/53d998ab1f76e/Bootstrap/output.tre (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:137)
+	at java.io.FileInputStream.<init>(FileInputStream.java:96)
+	at BootstrapSpeciesTreeMPEST.main(BootstrapSpeciesTreeMPEST.java:206)
+cp: cannot stat `Output/53d998ab1f76e//FinalOutput.tre': No such file or directory
+cp: cannot stat `outtree': No such file or directory
+runBootStrap.sh: line 20: cd: Output/53d998ab1f76e/: No such file or directory
+Loading required package: Matrix
+Loading required package: lattice
+Loading required package: ape
+
+Attaching package: ‘phybase’
+
+The following object(s) are masked from ‘package:ape’:
+
+    write.dna
+
+Error in file(file, "r") : cannot open the connection
+Calls: read.tree.string -> scan -> file
+In addition: Warning message:
+In file(file, "r") :
+  cannot open file 'output.tre': No such file or directory
+Execution halted

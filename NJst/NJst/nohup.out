@@ -1,0 +1,320 @@
+cat: echo: No such file or directory
+Archive:  input.zip
+   creating: Bootstraps/
+  inflating: Bootstraps/.DS_Store    
+   creating: __MACOSX/
+   creating: __MACOSX/Bootstraps/
+  inflating: __MACOSX/Bootstraps/._.DS_Store  
+  inflating: Bootstraps/RAxML_bootstrap.01831_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.01874_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.02215_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.02540_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.03141_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.03310_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.03608_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.03653_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.03874_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.04205_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.05003_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.05024_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.05491_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.05539_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.06392_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.06545_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.06581_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.06778_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.07060_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.07331_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.07363_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.07367_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.07464_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.07792_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.07891_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.07892_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.07926_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.07942_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.08027_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.08048_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.08624_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.08653_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.08871_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.09367_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.09580_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.09610_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.09622_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.09896_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.10071_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.10086_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.10239_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.10579_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.10742_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.11116_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.12090_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.12546_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.12558_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.12671_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.12685_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.13339_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.13582_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.13675_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.14097_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.14166_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.14575_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.14783_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.14886_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.14984_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.14993_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.15239_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.15629_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.15706_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.15773_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.15828_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.15834_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.15844_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.15966_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.15991_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.15996_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.16000_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.16098_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.16115_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.16123_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.17112_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.17145_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.17249_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.17551_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.17942_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.17946_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.20037_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.20812_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.21604_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.21620_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.21678_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.22056_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.22185_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.23731_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.23736_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.23780_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.24025_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.24141_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.24244_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.24275_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.24302_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.24475_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.24511_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.24638_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.24646_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.24834_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.24860_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.25161_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.25369_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.25519_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.25925_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.26105_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.26790_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.26791_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.27696_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.27750_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.27786_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.27813_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.27943_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.27963_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.28151_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.28218_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.28243_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.28245_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.28260_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.28281_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.28317_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.28569_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.28629_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.28686_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.28689_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.29299_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.29895_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.30118_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.30190_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.30214_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.30392_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.30622_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.30829_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.31237_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.31269_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.31309_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.31345_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.31484_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.31508_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.32082_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.32117_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.32182_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.32640_0.7.tree  
+  inflating: Bootstraps/RAxML_bootstrap.chloroplast_2_mafft_gblocks_no_gapsR.tree  
+  inflating: __MACOSX/Bootstraps/._RAxML_bootstrap.chloroplast_2_mafft_gblocks_no_gapsR.tree  
+java.io.FileNotFoundException: Output/51ca0a8486af1/Bootstrap/SNA.txt (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:137)
+	at java.io.FileInputStream.<init>(FileInputStream.java:96)
+	at CreateInputMatrix.main(CreateInputMatrix.java:31)
+Output/51ca0a8486af1/ZipOutput	Output/51ca0a8486af1/ZipOutput/input.zip	Output/51ca0a8486af1/ZipOutput/__MACOSX	Output/51ca0a8486af1/ZipOutput/__MACOSX/Bootstraps	Output/51ca0a8486af1/ZipOutput/__MACOSX/Bootstraps/._RAxML_bootstrap.chloroplast_2_mafft_gblocks_no_gapsR.tree	Output/51ca0a8486af1/ZipOutput/__MACOSX/Bootstraps/._.DS_Store	Output/51ca0a8486af1/ZipOutput/Bootstraps	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.24302_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.02540_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.24646_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.28686_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.08653_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/.DS_Store	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.15706_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.32182_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.27786_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.17145_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.28689_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.31484_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.01831_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.14783_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.17946_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.28243_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.30392_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.27963_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.06778_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.25161_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.03653_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.08624_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.24025_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.15629_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.12685_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.14097_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.07367_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.11116_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.17112_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.30118_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.09610_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.15834_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.13675_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.28245_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.28281_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.06581_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.15996_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.09896_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.23731_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.10071_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.04205_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.10086_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.20812_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.30190_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.03310_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.17551_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.28317_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.21620_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.32082_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.07942_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.14984_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.14166_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.16115_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.03141_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.08027_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.25369_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.31237_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.01874_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.21678_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.28629_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.28218_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.20037_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.32640_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.12558_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.03608_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.14575_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.26791_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.07891_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.16000_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.05491_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.26105_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.23780_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.23736_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.15844_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.28260_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.07363_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.24860_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.09367_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.31309_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.12671_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.28569_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.15828_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.07792_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.24638_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.02215_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.31345_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.25519_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.08871_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.26790_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.12090_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.22056_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.27750_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.05003_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.30214_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.10239_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.15239_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.10742_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.07464_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.09580_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.07331_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.07926_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.14886_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.31269_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.16123_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.06392_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.14993_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.27696_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.chloroplast_2_mafft_gblocks_no_gapsR.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.24275_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.03874_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.24475_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.17249_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.30622_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.28151_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.27813_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.05024_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.06545_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.24141_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.31508_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.29895_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.10579_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.07892_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.15966_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.21604_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.24244_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.16098_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.07060_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.13339_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.27943_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.17942_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.29299_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.09622_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.24834_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.32117_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.12546_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.30829_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.13582_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.15773_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.05539_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.08048_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.24511_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.25925_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.15991_0.7.tree	Output/51ca0a8486af1/ZipOutput/Bootstraps/RAxML_bootstrap.22185_0.7.tree
+[2J[H
+[2J[H
+Consensus tree program, version 3.69
+
+Settings for this run:
+ C         Consensus type (MRe, strict, MR, Ml):  Majority rule (extended)
+ O                                Outgroup root:  No, use as outgroup species  1
+ R                Trees to be treated as Rooted:  No
+ T           Terminal type (IBM PC, ANSI, none):  ANSI
+ 1                Print out the sets of species:  Yes
+ 2         Print indications of progress of run:  Yes
+ 3                               Print out tree:  Yes
+ 4               Write out trees onto tree file:  Yes
+
+Are these settings correct? (type Y or the letter for one to change)
+
+Consensus tree written to file "outtree"
+
+Output written to file "outfile"
+
+Done.
+
+runBootStrap.sh: line 20: cd: Output/51ca0a8486af1/: No such file or directory
+======================================================================
+SumTrees - Phylogenetic Tree Split Support Summarization
+Version 3.3.1 (May 05 2011)
+By Jeet Sukumaran and Mark T. Holder
+(using the DendroPy Phylogenetic Computing Library Version 3.12.0)
+======================================================================
+
+SumTrees: Running in serial mode.
+SumTrees: 1 source(s) to be processed.
+SumTrees: Processing 1 of 1: 'FinalOutput.tre'
+SumTrees: (processing) 'FinalOutput.tre': tree at offset 500
+SumTrees: Serial processing of 1 source(s) completed.
+SumTrees: Split counting completed:
+SumTrees:  - 1000 trees considered in total for split support assessment.
+SumTrees:  - Trees treated as unrooted.
+SumTrees:  - Trees treated as unweighted.
+SumTrees:  - 33 unique taxa across all trees.
+SumTrees:  - 140 unique splits out of 64000 total splits counted.
+SumTrees:  - 106 unique non-trivial splits out of 30000 total non-trivial
+          splits counted.
+SumTrees: Constructing clade consensus tree ...
+SumTrees: Consensus tree (0.500000 clade frequency threshold) constructed from
+          splits.
+SumTrees: Percentage of support for each split indicated by node labels.
+SumTrees: Mapping edge lengths ...
+SumTrees: Writing results ...
+SumTrees: Results written to: 'output.tre'.
+SumTrees: Summarization completed.
+SumTrees: Began at: 2013-06-26 03:09:40.494771.
+SumTrees: Ended at: 2013-06-26 03:09:51.569520.
+SumTrees: Run time: 0 hour(s), 00 minute(s), 11.074749 second(s).
+
+R version 2.15.1 (2012-06-22) -- "Roasted Marshmallows"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-unknown-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> phylip.to.ape <- function(tree)
++ 
++ {
++ 
++ # Get the labels of the tips (sequences)
++ 
++ seqnames <- tree$tip.label
++ 
++ numseqs <- length(seqnames)
++ 
++ # Get the number of internal nodes in the tree:
++ 
++ numinternalnodes <- tree$Nnode
++ 
++ # Get the bootstrap values
++ 
++ bootstraps <- tree$edge.length
++ 
++ # Get the edges for the tree
++ 
++ edges <- tree$edge
++ 
++ # For each edge, find the node at the end of the edge (closer to the tips
++ 
++ # of the tree):
++ 
++ numedges <- nrow(edges)
++ 
++ numnodes <- numinternalnodes + numseqs
++ 
++ mybootstraps <- numeric(numinternalnodes)
++ 
++ for (i in 1:numedges)
++ 
++ {
++ 
++ startnode <- edges[i,1]
++ 
++ endnode <- edges[i,2]
++ 
++ # Make sure the end node is not a tip:
++ 
++ if (endnode > numseqs)
++ 
++ {
++ 
++ # Get the bootstrap value for this node:
++ 
++ bootstrap <- bootstraps[i]
++ 
++ mybootstraps[endnode] = bootstrap
++ 
++ }
++ 
++ }
++ 
++ mybootstraps2 <- mybootstraps[(numseqs+1):(numnodes)]
++ 
++ tree$node.label <- mybootstraps2
++ 
++ 
++ 
++ return(tree)
++ 
++ }
+> 
+> library(phybase);
+Loading required package: Matrix
+Loading required package: lattice
+Loading required package: ape
+tripleML 0.1-1 loaded
+
+Attaching package: ‘phybase’
+
+The following object(s) are masked from ‘package:ape’:
+
+    write.dna
+
+> library(ape);
+> genetrees <- read.tree.string("output.tre",format="phylip")$tree;
+[1] "The tree is not a binary tree!"
+> tr <- read.tree(text = genetrees[1]);
+> 
+> #tree <- phylip.to.ape(tr) 
+> plot.phylo(tr,show.node.label=TRUE,cex=0.55)
+> #nodelabels(tree$node.label,cex=0.55) 
+> 
+> 
+> 

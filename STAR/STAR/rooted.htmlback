@@ -1,0 +1,39 @@
+<html>
+
+<head> </head> <body>
+<title>Species Tree STAR Method Result</title>
+<link href=\"../../../../site.css\" type=\"text/css\" rel=\"stylesheet\" />
+<script type=\"text/javascript\" src=\"../../../../jquery.corner.js\"></script>
+<script type=\"text/javascript\" src=\"../../../../jquery.js\"></script>
+<script type=\"text/javascript\">
+        $(\"#footer\").corner(\"bottom\");
+</script>
+</head>
+<body>
+<div class=\"container\" style=\"height:90%;\">
+        <div class=\"top\">
+                <a>Invalid Tree Input</a><br /><br />
+        </div>
+        <div class=\"navbar\" align=\"left\">
+    <font size=4>           <a /><a href="../../../../index.php" id="first" >Home</a> <a href="../../../../STAR/STAR.php">STAR</a> <a href="../../../../mpest/mpest.php">MP-EST</a> <a href="../../../../NJst/NJst.php">NJst</a> <a href="../../../../ExtractSpecies/GenerateSpeciesAllele.php">CreateSNATable</a> <a href="../../../../RerootTree/unrooted2rooted.php">RerootTree</a><a href="../../../../Help/index.php">Help</a></font>
+        </div>
+        <div class=\"content\" style=\"height:150%;\">
+                <div class=\"mainpanel\" >
+                        <div class=\"register\" >
+                        Invalid Tree Input <br />
+                        <textarea  rows=\"8\" cols=\"80\"  name=\"dna1\">
+ReplaceMeHere</textarea><br />
+
+                        Possible reason is the tree is unrooted.  Try <a href="../../../../RerootTree/unrooted2rooted.php">root the trees</a>
+                        <br />
+
+
+                        </div>
+                </div>
+
+        </div>
+
+</div>
+</body>
+</html>
+

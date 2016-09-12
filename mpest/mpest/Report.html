@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Gene Tree Report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="../../../css/bootstrap.css" rel="stylesheet">
+    <link href="../../../css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../../../css/datatable.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+
+.dataTables_filter {
+display: none;
+}
+/*.dataTables_filter, .dataTables_info {display: none;}*/
+    </style>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="ico/favicon.png">
+  </head>
+
+
+  <body>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <!--<div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Sidebar</li>
+              <li class="active"><a href="index.php">Home</a></li>
+              <li><a href="N-Glyco.php">N-glycosylation compare</a></li>
+              <li><a href="VloopAlign.php">VLoop alignment</a></li>
+              <li><a href="Help.php">Help</a></li>
+            </ul>
+          </div>
+        </div>-->
+        <div class="span12">
+          <div class="hero-unit">
+            <a class="btn btn-primary btn-large" onclick="window.history.back();">Go Back</a>
+            <h1>Gene Tree Report</h1> <br />
+            <h2>Introduction</h2>
+            <p>Here we present a gene tree report comparing the gene tree against the species tree.  RF distance is calculated between the gene tree and the species tree by removing the missing taxa from the species tree.  Triple distance is also calculated.  The pdf file from the "Pairwise Comparison" column compares the species tree and gene tree, species tree is on the left and gene tree is on the right. In addition on the "GeneTree Diff Highlight" column, we present gene trees with conflicting branches (compared to species tree) highlighted with blue.  Gray highlight indicate branches that are the same. </p><br />
+
+
+            <div id="demo">
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="example" width="100%">
+                <thead >
+                <tr>
+                        <th style="border-bottom:3px solid black">Gene Tree Number</th>
+                        <th style="border-bottom:3px solid black">Modified RF Dist</th>
+                        <th style="border-bottom:3px solid black">Triple Dist</th>
+                        <th style="border-bottom:3px solid black">Number of Missing Taxa</th>
+                        <th style="border-bottom:3px solid black">Pairwise Comparison</th>
+                        <th style="border-bottom:3px solid black">GeneTree Diff Highlight</th>
+       
+                </tr>
+                </thead>
+                <tbody>
+ReplaceTable
+        </tbody>
+<!--
+        <tfoot>
+                <tr>
+                        <th>Gene Tree Number</th>
+                        <th>Modified RF Dist</th>
+                        <th>Triple Dist</th>
+			<th>Number of Missing Taxa</th>
+                        <th>Pairwise Comparison</th>
+                        <th>SpeciesTree Diff Highlight</th>
+                        <th>GeneTree Diff Highlight</th>
+                </tr>
+        </tfoot>
+-->
+</table>
+
+
+            <!--<p><a class="btn btn-primary btn-large" >Try Me &raquo;</a></p>-->
+          </div>
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+        <p>For encountered problems and questions please contact Timothy Shaw gatech@uga.edu</p>
+        <p>&copy; University of Georgia  2012</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../../js/jquery.js"></script>
+    <script src="../../../../js/bootstrap/bootstrap-transition.js"></script>
+    <script src="../../../../js/bootstrap/bootstrap-alert.js"></script>
+    <script src="../../../../js/bootstrap/bootstrap-modal.js"></script>
+    <script src="../../../../js/bootstrap/bootstrap-dropdown.js"></script>
+    <script src="../../../../js/bootstrap/bootstrap-scrollspy.js"></script>
+    <script src="../../../../js/bootstrap/bootstrap-tab.js"></script>
+    <script src="../../../../js/bootstrap/bootstrap-tooltip.js"></script>
+    <script src="../../../../js/bootstrap/bootstrap-popover.js"></script>
+    <script src="../../../../js/bootstrap/bootstrap-button.js"></script>
+    <script src="../../../../js/bootstrap/bootstrap-collapse.js"></script>
+    <script src="../../../../js/bootstrap/bootstrap-carousel.js"></script>
+    <script src="../../../../js/bootstrap/bootstrap-typeahead.js"></script>
+
+    <!--<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>-->
+    <script type="text/javascript" language="javascript" src="../../../../js/jquery.dataTables.js"></script>
+     <script type="text/javascript" charset="utf-8">
+                        $(document).ready(function() {
+                                $('#example').dataTable({
+     //"aaSorting": [[ 2, "desc" ]],
+     "fnRowCallback": function( nRow, aData, iDisplayIndex ) {
+//            $('td:eq(3)', nRow).html('<a href="view.php?comic=' + nRow[3] + '">' +
+ //               nRow[3] + '</a>');
+
+            $('td:eq(4)', nRow).html('<a href="' + aData[4] + '">' +
+               aData[4] + '</a>');
+            $('td:eq(5)', nRow).html('<a href="' + aData[5] + '">' +
+               aData[5] + '</a>');
+
+            return nRow;
+        },
+
+});
+                        } );
+
+
+ // Assigning BootStrap CSS classes to the DataTables components
+ $.fn.dataTableExt.oStdClasses.sPaging = "btn-group ";
+ $.fn.dataTableExt.oStdClasses.sPagePrevDisabled = "btn disabled ";
+ $.fn.dataTableExt.oStdClasses.sPageNextDisabled = "btn disabled ";
+ $.fn.dataTableExt.oStdClasses.sPagePrevEnabled = "btn ";
+ $.fn.dataTableExt.oStdClasses.sPageNextEnabled = "btn ";
+
+ // Adding arrows to table headers used to show sorting direction
+ $('th').each(function(){
+ if($(this).text() != ''){
+ $(this).append('<i class="icon-chevron-up"></i> <i class="icon-chevron-down"></i>');
+ }
+ });
+
+
+     </script>
+
+  </body>
+</html>
+
+

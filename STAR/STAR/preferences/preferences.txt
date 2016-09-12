@@ -1,0 +1,6 @@
+svgfile ../temp/output.svg
+topologyfile ../temp/output.tre
+xmlfile ../temp/output.xml
+treetype phylo
+treestyle square
+link http://supfam.cs.bris.ac.uk/SUPERFAMILY/cgi-bin/gen_list.cgi?genome=

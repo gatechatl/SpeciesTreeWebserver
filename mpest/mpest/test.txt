@@ -1,0 +1,1 @@
+java HXB2SHAPE2AlignmentCutoff HXB2_structure.txt ../Output/4fd2199f63da8/hxb2.txt ../Ouptut/4fd2199f63da8/query_refold.fasta ../Output/4fd2199f63da8/query_covar.fasta 120

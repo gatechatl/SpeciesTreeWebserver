@@ -1,0 +1,46 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<?xml-stylesheet type="text/css" href="../scripts/tree.css" ?>
+<svg width="600.0" height="644.0" viewBox="0 -72.0 600.0 644.0" version="1.1"
+xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" onload="startup(evt)">
+<text x='10' y='10' font-family="Arial" font-size="12" stroke-width="0" fill="red"></text>
+<g>
+<line style="stroke:rgb(99,99,99); stroke-width:3" x1="20.0" y1="250.0" x2="21.5" y2="250.0"/>
+<text  x="31.5" y="254.0" id="" ></text>
+
+<g><line style="stroke:rgb(99,99,99); stroke-width:3" x1="20.0" y1="20.0" x2="105.7105260166205" y2="20.0"/>
+<text  x="115.7105260166205" y="24.0" id="S6" >S6</text>
+
+<line style="stroke:rgb(99,99,99); stroke-width:3" x1="20.0" y1="112.0" x2="105.7105260166205" y2="112.0"/>
+<text  x="115.7105260166205" y="116.0" id="S5" >S5</text>
+
+<line style="stroke:rgb(99,99,99); stroke-width:3" x1="20.0" y1="342.0" x2="84.65789530193905" y2="342.0"/>
+<text  x="94.65789530193905" y="346.0" id="" ></text>
+
+<g><line style="stroke:rgb(99,99,99); stroke-width:3" x1="83.15789530193905" y1="296.0" x2="232.02631598891966" y2="296.0"/>
+<text  x="242.02631598891966" y="300.0" id="" ></text>
+
+<g><line style="stroke:rgb(99,99,99); stroke-width:3" x1="230.52631598891966" y1="250.0" x2="358.3421053296399" y2="250.0"/>
+<text  x="368.3421053296399" y="254.0" id="" ></text>
+
+<g><line style="stroke:rgb(99,99,99); stroke-width:3" x1="356.8421053296399" y1="204.0" x2="421.5" y2="204.0"/>
+<text  x="431.5" y="208.0" id="S1" >S1</text>
+
+<line style="stroke:rgb(99,99,99); stroke-width:3" x1="356.8421053296399" y1="296.0" x2="421.5" y2="296.0"/>
+<text  x="431.5" y="300.0" id="S2" >S2</text>
+
+<line style="stroke:rgb(99,99,99); stroke-width:3" x1="358.3421053296399" y1="204.0" x2="358.3421053296399" y2="296.0"/>
+</g><line style="stroke:rgb(99,99,99); stroke-width:3" x1="230.52631598891966" y1="388.0" x2="295.18421065927976" y2="388.0"/>
+<text  x="305.18421065927976" y="392.0" id="S4" >S4</text>
+
+<line style="stroke:rgb(99,99,99); stroke-width:3" x1="232.02631598891966" y1="250.0" x2="232.02631598891966" y2="388.0"/>
+</g><line style="stroke:rgb(99,99,99); stroke-width:3" x1="83.15789530193905" y1="480.0" x2="168.86842131855957" y2="480.0"/>
+<text  x="178.86842131855957" y="484.0" id="S3" >S3</text>
+
+<line style="stroke:rgb(99,99,99); stroke-width:3" x1="84.65789530193905" y1="296.0" x2="84.65789530193905" y2="480.0"/>
+</g><line style="stroke:rgb(99,99,99); stroke-width:3" x1="21.5" y1="20.0" x2="21.5" y2="342.0"/>
+</g>
+</g>
+</svg>
+

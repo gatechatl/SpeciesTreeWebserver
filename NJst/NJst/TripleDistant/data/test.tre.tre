@@ -1,0 +1,14 @@
+#Nexus
+[This mpest analysis was conducted at local time 18:23:53 on 02-28-2013 with seed = 61757.]
+Begin trees;
+  translate
+	1 species1,
+	2 species2,
+	3 species3,
+	4 species4,
+	5 species5,
+	6 species6,
+	7 species7,
+	8 species8,
+	9 species9;
+  tree 1 [nan] = (1:9.00,(5:9.00,(8:9.00,(6:9.00,(7:9.00,(3:9.00,(4:9.00,(2:9.00,9:9.00):7.000000):7.000000):7.000000):7.000000):7.000000):7.000000):7.000000);

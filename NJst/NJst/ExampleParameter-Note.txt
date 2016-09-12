@@ -1,0 +1,11 @@
+Example Parameters:
+
+CreateInputFileAndParameters.java
+
+"C:/School Notes/HIV_Diversity/RNA Structure/Subtype Structural Variation/Compendium/BC Map Output" RAW "C:/School Notes/HIV_Diversity/RNA Structure/Subtype Structural Variation/Compendium/ViralPlotDataResult/compendium_BCRNAFold_output.txt" "C:/School Notes/HIV_Diversity/RNA Structure/Subtype Structural Variation/Compendium/ViralPlotDataResult/compendium_BCRNAFold_param.txt"
+
+
+ViralRPlotting.java
+
+"C:/School Notes/HIV_Diversity/RNA Structure/Subtype Structural Variation/Compendium/ViralPlotDataResult/RNAFold_StDev_Plot.png" "C:/School Notes/HIV_Diversity/RNA Structure/Subtype Structural Variation/Compendium/ViralPlotDataResult/compendium_RNAFold_output.txt" "C:/School Notes/HIV_Diversity/RNA Structure/Subtype Structural Variation/Compendium/ViralPlotDataResult/compendium_RNAFold_param.txt" "C:/School Notes/HIV_Diversity/RNA Structure/Subtype Structural Variation/Compendium/ViralPlotDataResult/compendium_stdev_output.txt" "C:/School Notes/HIV_Diversity/RNA Structure/Subtype Structural Variation/Compendium/ViralPlotDataResult/compendium_stdev_param.txt" "C:/School Notes/HIV_Diversity/RNA Structure/Subtype Structural Variation/Compendium/ViralPlotDataResult/r_script_rnafold_stdev.r"
+

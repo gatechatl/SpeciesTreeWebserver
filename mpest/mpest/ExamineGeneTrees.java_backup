@@ -1,0 +1,173 @@
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
+import java.util.Iterator;
+import java.util.LinkedList;
+
+public class ExamineGeneTrees {
+
+	public static void main(String[] args) {
+		
+		try {
+			FileInputStream fstream = new FileInputStream(args[0]);
+			DataInputStream din = new DataInputStream(fstream); 
+			BufferedReader in = new BufferedReader(new InputStreamReader(din));
+			String trees = "";			
+			while (in.ready()) {
+				String str = in.readLine();
+				trees += str;
+			}
+			in.close();
+			LinkedList list = new LinkedList();
+			String[] split = trees.split(";");
+			for (int i = 0; i < split.length; i++) {
+				if (!split[i].trim().equals("")) {
+					list.add(split[i]);
+				}
+			}
+                        String speciestree = "";
+                        fstream = new FileInputStream(args[1]);
+                        din = new DataInputStream(fstream);
+                        in = new BufferedReader(new InputStreamReader(din));
+                        while (in.ready()) {
+                                speciestree = in.readLine();                               
+                        }
+                        in.close();
+			
+		    FileWriter fwriter = new FileWriter(args[2]);
+		    BufferedWriter out = new BufferedWriter(fwriter);
+		    out.write(createGeneTree(list));
+		    out.close();
+
+                    fwriter = new FileWriter(args[3]);
+                    out = new BufferedWriter(fwriter);
+
+                    Iterator itr = list.iterator();
+                    out.write("GeneTreeName,TreeDistance\n");
+                    int index = 1;
+                    while (itr.hasNext()) {
+                        String tree = (String)itr.next() + ";";
+			out.write("GeneTree" + index + "," + calculateTreeDist(tree, speciestree, args[4]) + "\n");
+                        index++;
+		    }
+		    out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static double calculateTreeDist(String tree1, String tree2, String folder) {
+		double result = -1;
+	   try {
+ 		    FileWriter fwriter = new FileWriter(folder + "/testDist.r");
+ 		    BufferedWriter out = new BufferedWriter(fwriter);
+ 		    out.write("library(phybase)\n"); 		     		     		    
+ 		    out.write("tree1 <- \"" + tree1 + "\"\n");
+ 		    out.write("tree2 <- \"" + tree2 + "\"\n");
+                    out.write("name<-species.name(tree1)\n");
+                    out.write("nodematrix1<-read.tree.nodes(tree1,name)$nodes\n");
+                    out.write("nodematrix2<-read.tree.nodes(tree2,name)$nodes\n");
+                    out.write("dist <- treedist(nodematrix1,nodematrix2)\n");
+ 		    //out.write("dist <- treedist(tree1, tree2)\n");
+ 		    out.write("write(dist, file = \"" + folder + "/treedist\");\n");	 		    	
+ 		    out.close();	
+ 		    executeCommand("R --vanilla < " + folder + "/testDist.r");
+ 			FileInputStream fstream = new FileInputStream(folder + "/treedist");
+ 			DataInputStream din = new DataInputStream(fstream); 
+ 			BufferedReader in = new BufferedReader(new InputStreamReader(din));			 			
+ 			result = new Double(in.readLine()); 				 			
+ 			in.close();
+	   } catch (Exception e) {
+		   e.printStackTrace();
+	   }
+	   
+		return result;
+	}
+	public static void executeCommand(String executeThis) {
+		try {
+			writeFile("tempexecuteCommand.sh", executeThis);
+	        String[] command = {"sh", "tempexecuteCommand.sh"};
+	        Process p1 = Runtime.getRuntime().exec(command);		        
+            BufferedReader inputn = new BufferedReader(new InputStreamReader(p1.getInputStream()));            
+            String line=null;
+            while((line=inputn.readLine()) != null) {}                        
+            inputn.close();
+             
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static void writeFile(String fileName, String command) {
+		try {
+		    FileWriter fwriter2 = new FileWriter(fileName);
+		    BufferedWriter out2 = new BufferedWriter(fwriter2);
+		    out2.write(command + "\n");		    		
+		    out2.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static String createGeneTree(LinkedList list) {
+		String str = "<!doctype html>\n";
+                str += "<html><head> </head> <body> <meta charset='utf-8' /> <meta name='viewport' content='width=1024' /> <meta name='apple-mobile-web-app-capable' content='yes' /> <title>impress.js | presentation tool based on the power of CSS3 transforms and transitions in modern browsers | by Bartek Szopka @bartaz</title> <meta name='author' content='Nicolas Wormser' /> <link href='http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic' rel='stylesheet' /> <link href='../../../css/impress-demo.css' rel='stylesheet' /><script type='text/javascript' src='../../../raphael-min.js' ></script><script type='text/javascript' src='../../../jsphylosvg-min.js'></script>";
+		str += "<script type='text/javascript'>window.onload = function(){";
+		
+		Iterator itr = list.iterator();
+		int index = 1;
+		while (itr.hasNext()) {
+			String tree = (String)itr.next();
+                        tree = "" + tree + ";";
+                        tree = tree.replaceAll(":0.", ":5.");
+                        tree = tree.replaceAll(":1.", ":5.");
+                        tree = tree.replaceAll(":2.", ":5.");
+                        tree = tree.replaceAll(":3.", ":5.");
+                        tree = tree.replaceAll(":4.", ":5.");
+                        tree = tree.replaceAll(":5.", ":5.");
+                        tree = tree.replaceAll(":6.", ":5.");
+                        tree = tree.replaceAll(":7.", ":5.");
+                        tree = tree.replaceAll(":8.", ":5.");
+                        tree = tree.replaceAll(":9.", ":5.");
+            str += "var dataObject" + index + " = { newick: '" + tree + "' };\n";
+            str += "phylocanvas" + index + " = new Smits.PhyloCanvas(\n";
+            str += "dataObject" + index + ",\n";
+            str += "'svgCanvas" + index + "',\n";
+            str += "800, 800,'circular'\n";
+            str += ");\n";
+            index++;
+		}
+		str += "}\n";
+		str += "</script></head><body><div id='impress' class='impress-not-supported'>    <div class='fallback-message'> <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p> <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser. Upcoming version 10 of Internet Explorer <i>should</i> also handle it.</p> </div>\n";
+		
+	    str += "<div id='soccent' class='step' data-x='0' data-y='0' data-scale='80'>\n";
+	    str += "<h1>Gene Tree Viewer<br />\n";
+	    str += "</h1>\n";
+	    str += "<h5>Press Arrow <br />Left or Right</h5>\n";
+	    str += "</div>\n";
+	    
+		for (int i = 1; i < index; i++) {
+	        //int i = 1;
+			int num = 50000 * i;
+		    str += "<div id='stree" + i + "' class='step' data-x='" + num + "' data-y='0' data-scale='80'>\n";
+		    str += "<br /><br /><br /><br /><br /><br /><br /><br /><br />\n";
+		    str += "<center><h5> Gene Tree " + i + "<h5></center/>\n";
+		    str += "</div>\n";
+		    str += "<div id='svgCanvas" + i + "' class='step' data-x='" + num + "' data-y = '0' data-scale='80'></div>\n";
+		}
+		
+                str += "    <div id='overview' class='step' data-x='100000' data-y='0' data-scale='300'>\n";
+	        str += " </div>\n";
+
+		str += "</div>\n";
+		str += "<script src='../../../impress.js'></script>\n";
+		str += "<script>impress();</script>\n";
+		str += "</body>\n";
+		str += "</html>\n";
+		
+		return str;
+
+	}
+}
+
